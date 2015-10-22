@@ -21,6 +21,7 @@
 				</tr>
 				<tr>
 					<td><input type="submit" value="Login" /></td>
+					<td><input type="button" value="Cadastrar" OnClick="parent.location.href='pessoa.jsp'"/></td>
 				</tr>
 			</table>
 		</fieldset>
