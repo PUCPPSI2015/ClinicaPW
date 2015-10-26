@@ -3,9 +3,18 @@ package clinica.modelo;
 public class Pessoa {
 	protected long id;
 	protected String nome;
+	protected String senha;
 	protected int CEP;
 	protected int Numero;
 	protected String complemento;
+	
+
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 	
 	public long getId() {
 		return id;
@@ -37,5 +46,4 @@ public class Pessoa {
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
-	
 }

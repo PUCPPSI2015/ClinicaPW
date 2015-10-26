@@ -20,6 +20,7 @@ public class PessoaServlet extends HttpServlet {
   
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// busca writer
+		@SuppressWarnings("unused")
 		PrintWriter out = response.getWriter();
 		
 		PessoaDao dao = new PessoaDao();
@@ -35,12 +36,14 @@ public class PessoaServlet extends HttpServlet {
 			}
 			
 			String nome = request.getParameter("nome");
+			String senha = request.getParameter("senha");
 			int CEP = Integer.parseInt(request.getParameter("CEP"));
 			int Numero = Integer.parseInt(request.getParameter("Numero"));
 			String complemento = request.getParameter("complemento");
 			
 			Pessoa pessoa = new Pessoa();
 			pessoa.setNome(nome);
+			pessoa.setSenha(senha);
 			pessoa.setCEP(CEP);
 			pessoa.setNumero(Numero);
 			pessoa.setComplemento(complemento);
@@ -76,9 +79,39 @@ public class PessoaServlet extends HttpServlet {
 				e.printStackTrace();
 				
 			}
-		}else{
-			RequestDispatcher dispatcher = request.getRequestDispatcher("pessoa.jsp");
-			dispatcher.forward(request, response);
+		}else if(action != null && action.equals("alterar")){
+			
+			Integer id = 0;
+			
+			
+			
+			String nome = request.getParameter("nome");
+			String senha = request.getParameter("senha");
+			int CEP = Integer.parseInt(request.getParameter("CEP"));
+			int Numero = Integer.parseInt(request.getParameter("Numero"));
+			String complemento = request.getParameter("complemento");
+			if(request.getParameter("id") != null && !request.getParameter("id").equals("")){
+				id = Integer.parseInt(request.getParameter("id"));
+			}
+			
+			Pessoa pessoa = new Pessoa();
+			pessoa.setNome(nome);
+			pessoa.setSenha(senha);
+			pessoa.setCEP(CEP);
+			pessoa.setNumero(Numero);
+			pessoa.setComplemento(complemento);
+			
+			try{
+				if(id != null && id > 0){
+					pessoa.setId(new Long(id));
+					dao.altera(pessoa);
+				}
+				RequestDispatcher dispatcher = request.getRequestDispatcher("Altera.jsp");
+				dispatcher.forward(request, response);
+			}catch(SQLException e){
+				e.printStackTrace();
+				
+			}
 		}
 	}
 }

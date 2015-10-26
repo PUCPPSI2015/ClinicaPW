@@ -5,12 +5,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <script type="text/javascript">
-	function gravar(){
-		document.getElementById("action").value="gravar";
+	function alterar(){
+		document.getElementById("action").value="alterar";
 	}
 </script>
 <head>
-<title>App Cadastro - PW</title>
+<title>App Alterar- PW</title>
 </head>
 
 <body>
@@ -31,10 +31,13 @@
 		<div align="left">
 			<label id="complemento">Complemento:</label><input id="complemento" name="complemento" type="text" size="45">
 		</div>
+		<div align="left">
+			<label id="id">ID:</label><input id="id" name="id" type="text" size="45">
+		</div>
 		<br>
 		
 		<div align="left">
-			<button id="gravar_subimit" onclick="gravar();" value="gravar">Gravar</button>
+			<button id="alterar_subimit" onclick="alterar();" value="alterar">Alterar</button>
 		</div>
 		<br>
 	</form>
@@ -44,6 +47,7 @@
 			<tr>
 				<th>ID</th>
 				<th>Nome</th>
+				<th>Senha</th>
 				<th>CEP</th>
 				<th>Numero</th>
 				<th>Complemento</th>
@@ -53,6 +57,7 @@
 				<tr>
 					<td>${pessoa.id }</td>
 					<td>${pessoa.nome }</td>
+					<td>${pessoa.senha }</td>
 					<td>${pessoa.CEP }</td>
 					<td>${pessoa.Numero }</td>
 					<td>${pessoa.complemento }</td>
